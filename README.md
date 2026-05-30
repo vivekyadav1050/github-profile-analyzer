@@ -1,10 +1,24 @@
 # GitHub Profile Analyzer API
 
+## Live Demo
+
+**Live API URL**
+
+https://github-profile-analyzer-5rsa.onrender.com
+
+**GitHub Repository**
+
+https://github.com/vivekyadav1050/github-profile-analyzer
+
+---
+
 ## Overview
 
-GitHub Profile Analyzer API is a backend application built with Node.js, Express.js, MySQL, and the GitHub REST API. The system analyzes GitHub user profiles, generates meaningful developer insights, and stores the analyzed data for future access.
+GitHub Profile Analyzer API is a backend application built with Node.js, Express.js, MySQL, and the GitHub REST API.
 
-Instead of simply returning raw GitHub data, the application performs additional analysis such as identifying the most used programming language, calculating total repository stars, detecting the top-performing repository, and generating a custom developer score.
+The application analyzes GitHub user profiles and generates meaningful developer insights instead of simply returning raw GitHub data. The analyzed information is stored in MySQL and can be retrieved later through dedicated REST APIs.
+
+The system calculates advanced metrics such as programming language usage, repository popularity, account age, and a custom developer score.
 
 ---
 
@@ -17,7 +31,7 @@ Instead of simply returning raw GitHub data, the application performs additional
 * Store analyzed profile data in MySQL
 * Fetch all analyzed profiles
 * Fetch a specific profile by username
-* Update existing profile analysis automatically
+* Automatically update existing profiles
 
 ### Advanced Insights
 
@@ -34,7 +48,7 @@ Instead of simply returning raw GitHub data, the application performs additional
 * Invalid Username Validation
 * Centralized Error Handling
 * Duplicate Profile Prevention
-* Secure Environment Variable Management
+* Environment Variable Configuration
 
 ---
 
@@ -48,6 +62,7 @@ Instead of simply returning raw GitHub data, the application performs additional
 | GitHub REST API | External Data Source |
 | Axios           | HTTP Client          |
 | Aiven MySQL     | Cloud Database       |
+| Render          | Deployment Platform  |
 
 ---
 
@@ -77,9 +92,30 @@ JSON Response
 
 ---
 
+## Project Structure
+
+```text
+github-profile-analyzer
+│
+├── src
+│   ├── config
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   └── services
+│
+├── schema.sql
+├── server.js
+├── package.json
+├── README.md
+└── .gitignore
+```
+
+---
+
 ## Database Schema
 
-### github_profiles
+Table: github_profiles
 
 | Column             | Type         |
 | ------------------ | ------------ |
@@ -108,7 +144,7 @@ JSON Response
 
 POST /api/github/analyze
 
-Request
+Request:
 
 ```json
 {
@@ -116,13 +152,9 @@ Request
 }
 ```
 
----
-
 ### Get All Profiles
 
 GET /api/github/profiles
-
----
 
 ### Get Single Profile
 
@@ -138,11 +170,12 @@ GET /api/github/profiles/torvalds
 
 ## Developer Score Formula
 
-The application generates a custom developer score using:
-
 Developer Score =
+
 Followers +
+
 (Total Stars × 2) +
+
 (Public Repositories × 5)
 
 This score provides a simple indicator of repository popularity and community engagement.
@@ -163,7 +196,7 @@ git clone https://github.com/vivekyadav1050/github-profile-analyzer.git
 npm install
 ```
 
-### Create Environment Variables
+### Create .env File
 
 ```env
 DB_HOST=
@@ -174,7 +207,7 @@ DB_NAME=
 GITHUB_TOKEN=
 ```
 
-### Start Application
+### Run Application
 
 ```bash
 npm start
@@ -201,6 +234,16 @@ npm start
 
 ---
 
+## Postman Collection
+
+A Postman collection containing all API endpoints is included for easy testing.
+
+Collection Name:
+
+GitHub Profile Analyzer
+
+---
+
 ## Future Improvements
 
 * Repository Activity Analysis
@@ -208,7 +251,8 @@ npm start
 * GitHub Organization Insights
 * Repository Language Distribution Charts
 * Profile Analytics Dashboard
-* Caching Layer with Redis
+* Redis Caching
+* Authentication & User Accounts
 
 ---
 
@@ -216,4 +260,6 @@ npm start
 
 Vivek Yadav
 
-Backend Developer | Node.js | Express.js | MySQL
+Backend Developer
+
+Node.js | Express.js | MySQL | REST APIs
